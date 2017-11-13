@@ -3,7 +3,7 @@ var html = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http
   '\t<head>\n' +
   '\t\t<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" /><title>\n' +
   '\t\t</title>\n' +
-  '\t\t<style type="text/css">\n' +
+  '\t\t<style type="text/weui">\n' +
   '\t\t\t.csD15247B9{text-align:left;text-indent:0pt;margin:0pt 0pt 0pt 0pt;line-height:1.5}\n' +
   '\t\t\t.cs3480CB9D{color:#000000;background-color:transparent;font-family:新宋体; font-size:11pt; font-weight:normal; font-style:normal; }\n' +
   '\t\t\t.cs670B848A{color:#000000;background-color:transparent;font-family:新宋体; font-size:11pt; font-weight:bold; font-style:normal; }\n' +

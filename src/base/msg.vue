@@ -9,7 +9,6 @@
 <script>
     export default {
         props: {
-            text: String,
             delay: {
                 type: Number,
                 default: 3000
@@ -17,6 +16,7 @@
         },
         data() {
             return {
+                text: "",
                 timer: null,
                 showTag: false
             };
@@ -30,10 +30,11 @@
 
         },
         methods: {
-            show() {
+            show(text) {
                 if (this.timer) {
                     return
                 }
+                this.text = text;
                 this.showTag = true;
                 this.timer = setTimeout(() => {
                     this.hide();
@@ -42,7 +43,7 @@
             hide() {
                 this.timer = null;
                 this.showTag = false;
-                this.$emit("hide",1);
+                this.$emit("hide", 1);
             }
         }
     };

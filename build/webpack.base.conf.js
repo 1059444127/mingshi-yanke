@@ -6,79 +6,80 @@ var vueLoaderConfig = require('./vue-loader.conf')
 var HtmlWebpackIncludeAssetsPlugin = require("html-webpack-include-assets-plugin")
 
 var publicPath = process.env.NODE_ENV === 'production'
-  ? config.build.assetsPublicPath
-  : config.dev.assetsPublicPath
+    ? config.build.assetsPublicPath
+    : config.dev.assetsPublicPath
 
 function resolve(dir) {
-  return path.join(__dirname, '..', dir)
+    return path.join(__dirname, '..', dir)
 }
 
 module.exports = {
-  entry: {
-    app: './src/main.js'
-  },
-  output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: publicPath
-  },
-  resolve: {
-    extensions: ['.js', '.vue', '.json'],
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src'),
+    entry: {
+        app: './src/main.js'
     },
-    symlinks: false
-  },
-  module: {
-    rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        include: [resolve('src'), resolve('test'),resolve("node_modules/lmw-validate/index.js")]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('media/[name].[hash:7].[ext]')
-        }
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
-      }
+    output: {
+        path: config.build.assetsRoot,
+        filename: '[name].js',
+        publicPath: publicPath
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': resolve('src'),
+        },
+        symlinks: false
+    },
+    module: {
+        rules: [
+            {
+                test: /\.vue$/,
+                loader: 'vue-loader',
+                options: vueLoaderConfig
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [resolve('src'), resolve('test'), resolve("node_modules/lmw-validate/index.js")]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('media/[name].[hash:7].[ext]')
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+                }
+            }
+        ]
+    },
+    plugins: [
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: [
+                "static/lib/md5-min.js",
+                "static/lib/sha512.min.js",
+                "static/lib/url.min.js",
+                "static/lib/swiper/swiper-3.4.2.min.js",
+                "static/lib/swiper/swiper-3.4.2.min.css",
+                "static/lib/weui/weui.css",
+            ],
+            append: false,
+            publicPath: publicPath
+        })
     ]
-  },
-  plugins: [
-    new HtmlWebpackIncludeAssetsPlugin({
-      assets: [
-        "static/lib/md5-min.js",
-        "static/lib/sha512.min.js",
-        "static/lib/url.min.js",
-        "static/lib/swiper/swiper-3.4.2.min.js",
-        "static/lib/swiper/swiper-3.4.2.min.css"
-      ],
-      append: false,
-      publicPath: publicPath
-    })
-  ]
 }
