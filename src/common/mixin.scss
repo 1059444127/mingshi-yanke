@@ -119,3 +119,11 @@
     @include w_h($w, $h);
   }
 }
+
+@mixin lineClamp($line:2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+  line-height: 1.2;
+}
