@@ -82,7 +82,7 @@
     /*display: flex;*/
     /*flex-direction: column;*/
     overflow: hidden;
-    position: relative;
+    position: absolute;
     width: 100%;
     height: 100%;
   }
