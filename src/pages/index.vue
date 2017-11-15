@@ -16,7 +16,6 @@
           {{nav.text}}
         </router-link>
       </ul>
-
       <router-view></router-view>
     </div>
   </div>
@@ -98,14 +97,14 @@
       }
     }
     .nav {
-      margin-top: 10px*$bili;
+      margin-top: 0.2rem;
       li {
         &.current {
           @include border(bottom, $mainColor);
           color: $mainColor;
         }
         @include border(bottom);
-        @include h_lh(35px*$bili);
+        @include h_lh(0.85rem);
         width: (100% / 3);
         background-color: white;
       }

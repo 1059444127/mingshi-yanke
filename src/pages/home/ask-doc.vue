@@ -1,6 +1,10 @@
 <template>
   <div class="">
-    <consult-item v-for="(item ,index) in list" :item="item" :key="index"></consult-item>
+    <scroll class="list" :height="scrollHeight" :data="list">
+      <div>
+        <consult-item v-for="(item ,index) in list" :item="item" :key="index"></consult-item>
+      </div>
+    </scroll>
     <msg ref="msg"></msg>
   </div>
 </template>
@@ -9,9 +13,10 @@
   import http from "../../lib/http"
   import weuijs from "weui.js"
   import {debug} from "../../lib/util"
-
+  import {scrollHeightMixin} from "../../lib/mixin"
   import ConsultItem from "../../components/consult/item.vue"
   import Msg from "../../base/msg.vue"
+  import Scroll from "../../base/scroll.vue"
 
   export default {
     data() {
@@ -19,8 +24,13 @@
         list: []
       };
     },
-    computed: {},
-    components: {Msg, ConsultItem},
+    computed: {
+      bottomHeight() {
+        return window.rem2px * (3.4 + 0.2 + 0.85) - 45
+      }
+    },
+    mixins: [scrollHeightMixin],
+    components: {Msg, ConsultItem, Scroll},
     created() {
       this.getData()
     },
@@ -41,13 +51,16 @@
         } else {
           this.$refs.msg.show(ret.msg || "接口错误" + ret.code);
         }
-
-
       }
     }
   };
 </script>
 
 <style scoped lang="scss">
-
+  .list {
+    overflow: hidden;
+    > div {
+      padding-bottom: .2rem;
+    }
+  }
 </style>
