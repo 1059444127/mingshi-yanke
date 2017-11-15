@@ -16,14 +16,15 @@
       </dt>
       <dd class="">
         <div class="hd">
-          <input type="password" placeholder="请输入验证码">
+          <input v-model="form.captcha" type="text" placeholder="请输入验证码">
         </div>
         <div class="ht">
-          <send-code v-model="form.cid" :mobile="form.mobile" @error="codeError"></send-code>
+          <send-code @result="onResult" v-model="form.cid" service="smarthos.captcha.pat.register" :mobile="form.mobile"
+                     @error="codeError"></send-code>
         </div>
       </dd>
     </dl>
-    <msg :text="msg" ref="msg"></msg>
+    <msg ref="msg"></msg>
   </div>
 </template>
 
@@ -40,8 +41,7 @@
           mobile: "",
           cid: "",
           captcha: ""
-        },
-        msg: ""
+        }
       };
     },
     computed: {},
@@ -61,8 +61,12 @@
     },
     methods: {
       codeError(msg) {
-        this.msg = msg;
-        this.$refs.msg.show();
+        this.$refs.msg.show(msg);
+      },
+      onResult(obj) {
+        if (obj && obj.value) {
+          this.form.captcha = obj.value;
+        }
       },
       ...mapMutations({
         changeForm: types.USER_REG_FORM

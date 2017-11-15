@@ -22,6 +22,14 @@ class cache {
       storage.set(this.key, value);
     }
   }
+
+  remove() {
+    if (this.session) {
+      storage.session.remove(this.key);
+    } else {
+      storage.remove(this.key);
+    }
+  }
 }
 
 let prefix = config.key_prefix + (window.version || "") + "_";
@@ -61,6 +69,9 @@ export const historyCache = new history(HISTORY_CACHE_KEY, true);
 
 const TOKEN_CACHE_KEY = prefix + "token_"
 export const tokenCache = new cache(TOKEN_CACHE_KEY)
+
+const USER_CACHE_KEY = prefix + "user_"
+export const userCache = new cache(USER_CACHE_KEY)
 
 const FROM_CACHE_KEY = prefix + "from_"
 export const fromCache = new cache(FROM_CACHE_KEY, true)
