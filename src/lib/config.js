@@ -21,13 +21,11 @@ export default {
     {name: "ask-doc", value: "问医生", text: "更多功能", path: "/more"}
   ],
   index_nav: [
-    {name: "guide", value: "智能导诊"},
-    {name: "book", value: "预约挂号", path: "/home/server/book"},
-    {name: "queuing", value: "排队叫号"},
-    {name: "payment", value: "诊间支付"},
-    {name: "report", value: "查报告单"},
-    {name: "steward", value: "住院管家"},
-    {name: "help", value: "就诊指南"},
+    {name: "guide", value: "我的医生"},
+    {name: "book", value: "预约挂号"},
+    {name: "queuing", value: "就诊加号"},
+    {name: "payment", value: "眼底病优先通道"},
+    {name: "report", value: "眼外伤快速预约"},
     {name: "more", value: "更多"}
   ],
   my_doc_nav: [
