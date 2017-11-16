@@ -5,9 +5,9 @@
         <consult-item v-for="(item ,index) in list" :item="item" :key="index"></consult-item>
       </div>
     </scroll>
-    <div class="add fixed">
+    <router-link tag="div" to="/consult/add" class="add fixed">
       立即咨询
-    </div>
+    </router-link>
     <msg ref="msg"></msg>
   </div>
 </template>

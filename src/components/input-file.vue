@@ -1,28 +1,72 @@
 <template>
-  <input class="zj-upload-file" type="file" accept="*/*" @change="onChange" ref="file"/>
+    <input class="zj-upload-file fixed" type="file" accept="*/*" @change="onChange" ref="file"/>
 </template>
 
 <script>
-  export default {
-    data() {
-      return {};
-    },
-    computed: {},
-    components: {},
-    mounted() {
+    import http from "../lib/http"
+    import {debug} from "../lib/util"
 
-    },
-    beforeDestroy() {
+    export default {
+        data() {
+            return {};
+        },
+        computed: {},
+        components: {},
+        mounted() {
 
-    },
-    methods: {
-      onChange() {
+        },
+        beforeDestroy() {
 
-      }
-    }
-  };
+        },
+        methods: {
+            async onChange() {
+                let files = this.$refs.file.files;
+                await this.queueThumb(files);
+                await this.queueUpload(files);
+            },
+            async queueThumb(files) {
+                for (let i = 0, l = files.length; i < l; i++) {
+                    let thumb = await this.getThumb(files[i]);
+                    this.$emit("thumb", i, thumb, l);
+                    this.$emit("status", i, "start", l);
+                }
+                return "ok";
+            },
+            async queueUpload(files) {
+                /*smarthos.system.file.upload.image.base64*/
+                for (let i = 0, l = files.length; i < l; i++) {
+                    let thumb = await this.getThumb(files[i]);
+                    let ret = await http("smarthos.system.file.upload.image.base64", {
+                        module: "CONSULT",
+                        fileType: "IMAGE",
+                        fileName: files[i].name,
+                        base64: thumb
+                    });
+                    this.$emit("status", i, "end", l);
+                    this.$emit("uploaded", i, ret, l);
+                }
+                return "ok";
+            },
+            getThumb(file) {
+                return new Promise((resolve, reject) => {
+                    let fr = new FileReader();
+                    fr.readAsDataURL(file);
+                    fr.onload = () => {
+                        resolve(fr.result);
+                    }
+                    fr.onerror = (err) => {
+                        reject(err);
+                    }
+                })
+            }
+        }
+    };
 </script>
 
 <style scoped lang="scss">
-
+    .zj-upload-file {
+        opacity: 0;
+        left: 100%;
+        top: 100%;
+    }
 </style>
