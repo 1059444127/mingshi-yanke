@@ -1,24 +1,26 @@
 <template>
-    <div class="">
-
-    </div>
+  <input class="zj-upload-file" type="file" accept="*/*" @change="onChange" ref="file"/>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {};
-        },
-        computed: {},
-        components: {},
-        mounted() {
+  export default {
+    data() {
+      return {};
+    },
+    computed: {},
+    components: {},
+    mounted() {
 
-        },
-        beforeDestroy() {
+    },
+    beforeDestroy() {
 
-        },
-        methods: {}
-    };
+    },
+    methods: {
+      onChange() {
+
+      }
+    }
+  };
 </script>
 
 <style scoped lang="scss">

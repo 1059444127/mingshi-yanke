@@ -1,24 +1,24 @@
 <template>
-    <div class="">
+  <div class="">
 
-    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {};
-        },
-        computed: {},
-        components: {},
-        mounted() {
+  export default {
+    data() {
+      return {};
+    },
+    computed: {},
+    components: {},
+    mounted() {
 
-        },
-        beforeDestroy() {
+    },
+    beforeDestroy() {
 
-        },
-        methods: {}
-    };
+    },
+    methods: {}
+  };
 </script>
 
 <style scoped lang="scss">

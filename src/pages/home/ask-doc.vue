@@ -1,10 +1,13 @@
 <template>
-  <div class="">
+  <div class="index-ask-doc">
     <scroll class="list" :height="scrollHeight" :data="list">
       <div>
         <consult-item v-for="(item ,index) in list" :item="item" :key="index"></consult-item>
       </div>
     </scroll>
+    <div class="add fixed">
+      立即咨询
+    </div>
     <msg ref="msg"></msg>
   </div>
 </template>
@@ -57,6 +60,23 @@
 </script>
 
 <style scoped lang="scss">
+  @import "../../common/common";
+
+  .index-ask-doc {
+    .add {
+      $w: .3rem;
+      font-size: $w;
+      width: $w*4;
+      line-height: 1.2;
+      padding: $w;
+      color: white;
+      border-radius: $w*2;
+      background-color: $mainColor;
+      right: $commonSpace;
+      bottom: $commonSpace;
+    }
+  }
+
   .list {
     overflow: hidden;
     > div {
