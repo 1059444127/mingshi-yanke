@@ -1,11 +1,11 @@
 <template>
     <div class="flex zj-doc-say">
-        <div class="ava flex0 center">
+        <router-link :to="{path:'/doc/'+know.snsKnowledge.docId}" tag="div" class="ava flex0 center">
             <img :src="know.docAvatar|docAva" alt="">
             <br>
             <span>{{know.docName}}</span>
-        </div>
-        <div class="info flex1">
+        </router-link>
+        <div class="info flex1" @click="downloadApp">
             <div class="desc">{{know.snsKnowledge.description}}</div>
             <div class="audio flex">
                 <div class="icon flex0"></div>
@@ -24,6 +24,7 @@
 
 <script>
     import {docAva, timeFormat} from "../../lib/filter"
+    import {guideAppMixin} from "../../lib/mixin"
 
     export default {
         props: ['know'],
@@ -31,6 +32,7 @@
             return {};
         },
         computed: {},
+        mixins: [guideAppMixin],
         filters: {docAva, timeFormat},
         components: {},
         created() {
@@ -60,11 +62,11 @@
         .ava {
             width: 80px*$bili;
             $avaW: 60px;
-            font-size: 16px; /*no*/
+            font-size: 14px; /*no*/
             img {
                 margin-bottom: 5px*$bili;
                 @include w_h($avaW*$bili, $avaW*$bili);
-                border-radius: $avaW/2;
+                border-radius: $avaW*$bili/2;
             }
         }
         .info {

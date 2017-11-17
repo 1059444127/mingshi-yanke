@@ -1,3 +1,5 @@
+import weuijs from "weui.js"
+
 /**
  * 不用滚动组件，中间滚动区域的计算
  * @type {{mounted: (function())}}
@@ -39,6 +41,16 @@ export const scrollHeightMixin = {
                 h = h - this.bottomHeight;
             }
             this.scrollHeight = h;
+        }
+    }
+}
+
+export const guideAppMixin = {
+    methods: {
+        downloadApp() {
+            weuijs.confirm("请下载APP，体验更多功能",() => {
+
+            });
         }
     }
 }
