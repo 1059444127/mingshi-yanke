@@ -16,10 +16,10 @@
     </div>
     <div class="b flex">
       <div class="replay flex1" v-if="!item.userDocVo">暂无医生回答</div>
-      <div class="replay flex1 flex" v-else>
+      <router-link tag="div" :to="{path:'/doc/'+item.userDocVo.id}" class="replay flex1 flex" v-else>
         <img :src="item.userDocVo.docAvatar" alt="" class="flex0">
         <span class="flex0">{{item.userDocVo.docName}}</span>
-      </div>
+      </router-link>
       <div class="time flex0">{{item.consultInfo.createTime | timeFormat('%Y-%m-%d')}} | {{item.consultInfo.replyCount}}回复</div>
     </div>
   </div>
@@ -69,7 +69,7 @@
         $statusColors: (
           -1 #999,
           0 orange,
-          1 $mainColor,
+          2 $mainColor,
           3 red,
           5 blue,
           7 green

@@ -9,6 +9,7 @@ import Home from "./home"
 import User from "./user"
 import IndexChildren from "./index-children"
 import Consult from "./consult"
+import Doc from "./doc"
 
 Vue.use(Router)
 
@@ -22,6 +23,7 @@ const router = new Router({
       ]
 
     },
+    ...Doc,
     ...Consult,
     ...MyDoc,
     ...Health,

@@ -50,6 +50,11 @@ export default {
     },
     {name: "about", value: "关于", path: "/about"}
   ],
+  doc_nav: [
+    {name: "book", value: "预约挂号"},
+    {name: "apply", value: "加号申请"},
+    {name: "baodao", value: "患者报到"}
+  ],
   book_doc_nav: [
     {name: "bypeople", value: "按专家预约"},
     {name: "bytime", value: "按时间预约"}
@@ -66,7 +71,7 @@ export default {
   ],
   consult_status: [
     {name: "待付款", status: "0"},
-    {name: "待处理", status: "1"},
+    {name: "待处理", status: "2"},
     {name: "进行中", status: "3"},
     {name: "待评价", status: "5"},
     {name: "已评价", status: "7"},
