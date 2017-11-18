@@ -3,7 +3,6 @@
         <img :src="src" alt="">
     </div>
 </template>
-
 <script>
     import {debug} from "../lib/util"
 
@@ -41,17 +40,6 @@
                     imgDom.style.transform = `translateX(-${(height / ih * iw - width) / 2}px)`;
                     imgDom.style.height = `${height}px`
                 }
-                /*setTimeout(() => {
-                    let dom = this.$refs.dom,
-                        {width, height} = dom.getBoundingClientRect(),
-                        imgDom = dom.querySelector("img");
-                    if (ih > iw) {
-                        imgDom.style.width = `${width}px`
-                    } else {
-                        imgDom.style.transform = `translateX(-${(height / ih * iw - width) / 2}px)`;
-                        imgDom.style.height = `${height}px`
-                    }
-                }, 200)*/
             },
 
             getDom() {
@@ -84,7 +72,6 @@
         }
     };
 </script>
-
 <style scoped lang="scss">
     .ava-thumb {
         mask-image: url("../../static/img/mask.fw.png");
