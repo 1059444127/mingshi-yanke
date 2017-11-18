@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body,p,ul,li,ol,dl,dt,dd{
+body, p, ul, li, ol, dl, dt, dd {
   margin: 0;
   padding: 0;
 }
@@ -23,6 +23,7 @@ input {
   border: 0px none;
   outline: none;
   -webkit-appearance: none;
+  font-size: 14px; /*no*/
 }
 
 textarea {
