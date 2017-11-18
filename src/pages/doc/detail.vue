@@ -5,9 +5,7 @@
         </app-header>
         <div class="main flex1 overflow-y-auto" ref="main">
             <div class="info">
-                <div class="ava overflow-hidden">
-                    <img :src="doc.docAvatar|docAva" alt="">
-                </div>
+                <ava-thumb class="ava" :src="doc.docAvatar|docAva"></ava-thumb>
                 <div class="name center">
                     {{doc.docName}} <i>名医</i></div>
                 <div class="dept center">{{doc.deptName}} {{doc.docTitle}}</div>
@@ -52,6 +50,7 @@
     import config from "../../lib/config"
     import AppHeader from "../../components/app-header.vue"
     import {docAva} from "../../lib/filter"
+    import AvaThumb from "../../base/ava-thumb.vue"
 
     export default {
         data() {
@@ -65,7 +64,7 @@
         computed: {},
         filters: {docAva},
         mixins: [mainHeightMixin, guideAppMixin],
-        components: {AppHeader, DocSay, Msg},
+        components: {AppHeader, DocSay, Msg, AvaThumb},
         created() {
             this.id = this.$route.params.id;
             this.init();
@@ -122,9 +121,8 @@
             background-color: white;
             .ava {
                 $w: 160px;
-                border-radius: $w/2;
+                @include w_h($w, $w);
                 margin: 0 auto;
-                @include thumb($w, $w);
             }
             .name, .dept, .hos {
                 color: #666;
