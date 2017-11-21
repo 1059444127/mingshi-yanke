@@ -49,6 +49,7 @@
   import weuijs from "weui.js"
   import {tokenCache, fromCache, userCache} from "../../lib/cache"
   import Msg from "../../base/msg.vue"
+  import {passFormat} from "../../lib/util"
 
   export default {
     mixins: [mainHeightMixin],
@@ -71,6 +72,7 @@
       async login() {
         //smarthos.user.pat.login
         let loading = weuijs.loading("提交中...");
+        this.form.patPassword = passFormat(this.form.patPassword);
         let ret = await http("smarthos.user.pat.login", this.form);
         loading.hide();
 

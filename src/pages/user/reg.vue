@@ -22,6 +22,7 @@
   import Msg from "../../base/msg.vue"
   import http from "../../lib/http";
   import weuijs from "weui.js"
+  import {passFormat} from "../../lib/util"
   import {tokenCache, userCache, fromCache} from "../../lib/cache"
 
   export default {
@@ -90,6 +91,8 @@
             this.$refs.msg.show(error);
             return
           }
+          form.patPassword = passFormat(form.patPassword);
+          form.patPassword2 = passFormat(form.patPassword2);
           this.reg(form);
         }
       },
