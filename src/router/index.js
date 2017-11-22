@@ -21,7 +21,10 @@ const router = new Router({
       children: [
         ...IndexChildren
       ]
-
+    },
+    {
+      path: '/download',
+      component: () => import("../pages/download.vue"),
     },
     ...Doc,
     ...Consult,
